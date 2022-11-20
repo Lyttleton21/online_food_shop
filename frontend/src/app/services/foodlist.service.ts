@@ -108,4 +108,8 @@ export class FoodlistService {
     this.getAllFoods().filter
     (food => food.tags.includes(tag));
   }
+
+  getFoodId(foodId:number):any{
+    return this.getAllFoods().find(food => food.id == foodId) ?? new FoodlistService()
+  }
 }

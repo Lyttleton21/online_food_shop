@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { FoodpageComponent } from './components/pages/foodpage/foodpage.component';
 import { HomeComponent } from './components/pages/home/home.component';
 
 const routes: Routes = [
@@ -22,6 +23,10 @@ const routes: Routes = [
     path:'tag/:tag',
     title:'Food Tag',
     component:HomeComponent
+  },
+  {
+    path:'food/:id',
+    component:FoodpageComponent
   }
 ];
 
