@@ -89,4 +89,12 @@ export class FoodlistService {
   ]
 
   constructor() { }
+
+  getAllFoods(){
+    return this.foodList;
+  }
+
+  getAllFoodsBySearchTerm(searchTerm:string){
+    return this.foodList.filter(food => food.name.toLowerCase().includes(searchTerm.toLowerCase()));
+  }
 }

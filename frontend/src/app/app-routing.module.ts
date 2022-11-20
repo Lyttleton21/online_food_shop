@@ -11,7 +11,12 @@ const routes: Routes = [
   {
     path:'home',
     title:'food-mine',
-    component:HomeComponent
+    component:HomeComponent,
+  },
+  {
+    path:'search/:searchTerm',
+    title:'Search Food',
+    component:HomeComponent,
   }
 ];
 

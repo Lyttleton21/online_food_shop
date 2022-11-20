@@ -9,9 +9,5 @@ export class FoodService {
 
   constructor(private foodListServices:FoodlistService) { }
 
-  getAllFoods(){
-    return this.foodListServices.foodList;
-  }
-
 
 }

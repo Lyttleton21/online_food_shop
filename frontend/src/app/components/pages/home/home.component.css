@@ -16,10 +16,12 @@ li a {
   flex-direction: column;
   overflow: hidden;
   color: #e72929;
+  text-decoration: none;
 }
 li a:hover{
   opacity: 0.9;
   cursor: pointer;
+  border: 1px solid #e72929;
 }
 li a img{
   object-fit: cover;
