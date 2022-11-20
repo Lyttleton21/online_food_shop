@@ -24,7 +24,12 @@ export class HomeComponent implements OnInit {
         // go to tsconfig.json change
         //"noPropertyAccessFromIndexSignature" to false,
         this.foods = this.foodListService.getAllFoodsBySearchTerm(data.searchTerm);
-      }else{
+      }
+      if(data.tag){
+        this.foods =
+        this.foodListService.getAllFoodByTag(data.tag);
+      }
+       else{
         this.foods = this.foodListService.getAllFoods();
         //console.log(this.foods);
       }

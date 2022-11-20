@@ -17,6 +17,11 @@ const routes: Routes = [
     path:'search/:searchTerm',
     title:'Search Food',
     component:HomeComponent,
+  },
+  {
+    path:'tag/:tag',
+    title:'Food Tag',
+    component:HomeComponent
   }
 ];
 

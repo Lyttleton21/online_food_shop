@@ -17,7 +17,7 @@ export class SearchComponent implements OnInit {
     this.activatedRoute.params.subscribe(params => {
       if(params.searchTerm){
         this.searchTerm = params.searchTerm;
-        console.log(this.searchTerm);
+        //console.log(this.searchTerm);
       }
     });
   }
