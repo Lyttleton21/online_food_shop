@@ -4,39 +4,24 @@
 
     <form [formGroup]="loginForm"
     (ngSubmit)="submit()">
-      <div class="input-container">
-        <label>Email</label>
-        <div>
-          <input type="email"
-          placeholder="Email"
-          formControlName="email">
-        </div>
-        <div class="error-list"
-        *ngIf="fc.email.errors && isSubmitted">
-          <div *ngIf="fc.email.errors.required">
-            Email should not be empty
-          </div>
-          <div *ngIf="fc.email.errors.email">
-            Email is not correct
-          </div>
-        </div>
-      </div>
-      <div class="input-container">
-        <label>Password</label>
-        <div>
-          <input type="password"
-          placeholder="Password"
-          formControlName="password">
-        </div>
-        <div class="error-list"
-        *ngIf="fc.password.errors && isSubmitted">
-          <div *ngIf="fc.password.errors.required">
-            Password should not be empty
-          </div>
-        </div>
-      </div>
-      <div class="button">
-        <button type="submit">
+
+      <text-input
+      [control]="fc.email"
+      [showErrorWhen]="isSubmitted"
+      type="email"
+      label="Email">
+      </text-input>
+
+      <text-input
+      [control]="fc.password"
+      [showErrorWhen]="isSubmitted"
+      type="password"
+      label="Password">
+      </text-input>
+
+      <div>
+        <button type="submit"
+        class="btn btn-success w-100">
           Login
         </button>
       </div>
