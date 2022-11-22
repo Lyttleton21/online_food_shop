@@ -1,5 +1,11 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import {ToastrModule} from 'ngx-toastr'
+
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,6 +18,7 @@ import { CartPageComponent } from './components/pages/cart-page/cart-page.compon
 import { TitleComponent } from './components/partials/title/title.component';
 import { NotFoundComponent } from './components/partials/not-found/not-found.component';
 import { NotFoundPageComponent } from './components/pages/not-found-page/not-found-page.component';
+import { LoginPageComponent } from './components/pages/login-page/login-page.component';
 
 @NgModule({
   declarations: [
@@ -24,11 +31,22 @@ import { NotFoundPageComponent } from './components/pages/not-found-page/not-fou
     CartPageComponent,
     TitleComponent,
     NotFoundComponent,
-    NotFoundPageComponent
+    NotFoundPageComponent,
+    LoginPageComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    BrowserAnimationsModule,
+    AppRoutingModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    ToastrModule.forRoot({
+       timeOut:5000,
+       positionClass: 'toast-top-full-width',
+       newestOnTop:false,
+       closeButton: true,
+       progressBar: true,
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
