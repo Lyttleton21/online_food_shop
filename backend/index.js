@@ -6,10 +6,14 @@ const sample_user = require('./data');
 const port = 2022;
 const app = express();
 const cors = require('cors');
+const food = require('./api/v1/food/food.route');
 const jwt = require('jsonwebtoken');
+const dotenv = require('dotenv');
+dotenv.config();
 
 const router = express.Router();
 app.use(cors());
+food.foodRoutes(router);
 
 router.use( function(req, res, next)  {
     res.header('Access-Control-Allow-Origin', '*');

@@ -10,7 +10,7 @@ resetLinkText="Reset Search"
       <img [src]="food.imageUrl" [alt]="food.name">
       <div class="contect">
         <div class="name">
-          {{food.name}}
+          {{food.name | titlecase}}
         </div>
         <span class="favorite {{food.favorite ? '' : 'not'}}">
           <i class="fa fa-heart"></i>

@@ -19,7 +19,10 @@ export class FoodpageComponent implements OnInit {
   ngOnInit(): void {
     this.activateRoute.params.subscribe(data => {
       if(data.id){
-        this.food = this.foodListservice.getFoodId(data.id);
+        this.foodListservice.getFoodId(data.id)
+        .subscribe($food => {
+          this.food = $food;
+        });
       }
     })
   }

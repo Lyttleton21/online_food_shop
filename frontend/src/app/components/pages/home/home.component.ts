@@ -10,7 +10,7 @@ import { FoodlistService } from 'src/app/services/foodlist.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  foods:Food[] = []
+  foods:any
 
   constructor(private foodListService:FoodlistService,
     private activatedRoute:ActivatedRoute){
@@ -23,15 +23,20 @@ export class HomeComponent implements OnInit {
         //To make this data.searchTerm work
         // go to tsconfig.json change
         //"noPropertyAccessFromIndexSignature" to false,
-        this.foods = this.foodListService.getAllFoodsBySearchTerm(data.searchTerm);
-      }else
-      if(data.tag){
-        this.foods =
-        this.foodListService.getAllFoodByTag(data.tag);
-      }
+        this.foodListService.getAllFoodsBySearchTerm(data.searchTerm)
+        .subscribe(search => {
+          this.foods = search;
+        });
+      }//else
+      // if(data.tag){
+      //   this.foods =
+      //   this.foodListService.getAllFoodByTag(data.tag);
+      // }
        else{
-        this.foods = this.foodListService.getAllFoods();
-        //console.log(this.foods);
+        this.foodListService.getAllFoods()
+        .subscribe(allfood => {
+          this.foods = allfood;
+        });
       }
     });
 
