@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 const sequelize = require('../../../config/connection');
 const Food = require('../models/food.model')(sequelize, Sequelize);
-const { op } = require('sequelize');
+const { Op } = require("sequelize");
 const asyncHandler = require('express-async-handler');
 
 
@@ -59,7 +59,9 @@ exports.foodController = {
         async (req, res) => {
             const data = req.params.name;
             const search = await Food.findAll({ 
-                where: { name: data } 
+                where: {
+                    name:data
+                } 
             });
             if(search === null){
                 res.status(404)
@@ -90,5 +92,26 @@ exports.foodController = {
         }
     ),
 
+    getAllTags:asyncHandler(
+        async (req, res) => {
+            const { count, rows }  = await Food.findAndCountAll({
+                where: {
+                    [Op.and]: [
+                      { tags: ['fastfood'] }
+                    ]
+                  }
+            });
+            console.log("ROWS:::",rows);
+            console.log("COUNT:::",count)
+        }
+        // async (req, res) => {
+        //     const tag = await Food.aggregate([
+        //         {
+        //             $unwind:'$tags'
+        //         }
+        //     ])
+        //     console.log(tag);
+        // }
+    )
 
 }

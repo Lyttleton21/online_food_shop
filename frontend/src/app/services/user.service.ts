@@ -13,9 +13,12 @@ const USER_KEY = 'User';
   providedIn: 'root'
 })
 export class UserService {
+
   private userSubject =
   new BehaviorSubject<User>(this.getUserFromLocalStorage());
+
   public userObservable:Observable<User>;
+
   constructor(private http:HttpClient,
     private toastr:ToastrService) {
     this.userObservable = this.userSubject.asObservable();
@@ -34,7 +37,7 @@ export class UserService {
           )
         },
         error: (errorResponse) => {
-          this.toastr.error(errorResponse.error, 'Login Failed')
+          this.toastr.error(errorResponse.message, 'Login Failed')
         }
       })
     );

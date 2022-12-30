@@ -7,13 +7,14 @@ const port = 2022;
 const app = express();
 const cors = require('cors');
 const food = require('./api/v1/food/food.route');
+const user = require('./api/v1/user/user.route');
 const jwt = require('jsonwebtoken');
-const dotenv = require('dotenv');
-dotenv.config();
+
 
 const router = express.Router();
 app.use(cors());
 food.foodRoutes(router);
+user.userRoutes(router);
 
 router.use( function(req, res, next)  {
     res.header('Access-Control-Allow-Origin', '*');
@@ -35,31 +36,34 @@ router.get('/', (req, res) =>{
     res.send('Server is up...Catch ya!');
 });
 
-app.post('/api/users/login', (req, res) => {
-    const {email, password} = req.body;
-    const user = sample_user.find(user => user.email === email &&
-        user.password === password);
+// app.post('/api/users/login', (req, res) => {
+//     const {email, password} = req.body;
+//     const user = sample_user.find(user => user.email === email &&
+//         user.password === password);
 
-        if(user){
-            res.send(generateTokenResponse(user));
-        }else{
-            res.status(400)
-            .send("User name or password is invalid");
-        }
-});
+//         if(user){
+//             res.send(generateTokenResponse(user));
+//         }else{
+//             res.status(400)
+//             .send("User name or password is invalid");
+//         }
+// });
 
-const generateTokenResponse = (user) => {
-    const token = jwt.sign({
-        email:user.email, isAdmin:user.isAdmin
-    }, "someRandomText", {
-        expiresIn:"30d"
-    });
+// const generateTokenResponse = (user) => {
+//     const token = jwt.sign({
+//         email:user.email, isAdmin:user.isAdmin
+//     }, "someRandomText", {
+//         expiresIn:"30d"
+//     });
 
-    user.token = token;
-    return user;
-}
+//     user.token = token;
+//     return user;
+// }
 
 app.use(router);
 app.listen(port, () =>{
     console.log(`My server is listening on port ${port}`);
 });
+
+
+// require('crypto').randomBytes(64).toString('hex')

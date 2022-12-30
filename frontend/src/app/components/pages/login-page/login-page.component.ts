@@ -39,14 +39,14 @@ export class LoginPageComponent implements OnInit {
       // alert(`Email: ${this.fc.email.value},
       // Password: ${this.fc.password.value}
       // `);
-      // const data = {
-      //   email: this.fc.email.value,
-      //   password: this.fc.password.value
-      // }
-      this.userService.login({
+      const data = {
         email: this.fc.email.value,
         password: this.fc.password.value
-      }).subscribe(() => {
+      }
+      this.userService.login(/*{
+        email: this.fc.email.value,
+        password: this.fc.password.value
+      }*/data).subscribe(() => {
         this.router.navigateByUrl(this.returnUrl);
       });
     }
